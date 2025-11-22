@@ -1,25 +1,14 @@
 streamlit
-python-dotenv
-
-# YouTube Transcript
 youtube-transcript-api
-
-# LangChain ecosystem
-langchain==0.2.11
-langchain-core==0.2.17
-langchain-community==0.2.8
-langchain-google-genai==1.0.3
+langchain
+langchain-community
+langchain-core
 langchain-huggingface
+langchain-google-genai
 faiss-cpu
-
-# Embeddings
 sentence-transformers
-
-# Google AI
+python-dotenv
+reportlab
 google-generativeai
-google-ai-generativelanguage
-
-
-
 
 
