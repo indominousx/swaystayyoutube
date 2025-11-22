@@ -4,11 +4,12 @@ langchain
 langchain-community
 langchain-core
 langchain-huggingface
-langchain-google-genai
+langchain-google-genai==1.0.3
 faiss-cpu
 sentence-transformers
 python-dotenv
 reportlab
 google-generativeai
+
 
 
