@@ -11,7 +11,41 @@ A Streamlit application for summarizing YouTube video transcripts using AI with 
 - 📝 Download summaries
 - 🕐 Summary history tracking
 
-## Deployment on Render
+## Deployment on Streamlit Community Cloud (Recommended)
+
+### Quick Deploy Steps
+
+1. **Push your code to GitHub** (Already done! ✅)
+
+2. **Go to Streamlit Community Cloud**
+   - Visit [share.streamlit.io](https://share.streamlit.io)
+   - Sign in with your GitHub account
+
+3. **Deploy New App**
+   - Click "New app" button
+   - Select repository: `indominousx/swaystay_youtube`
+   - Branch: `krishna` (or `main` after merging)
+   - Main file path: `app.py`
+   - Click "Deploy"
+
+4. **Add Secrets**
+   - Go to your app settings (⚙️ icon)
+   - Click "Secrets" in the sidebar
+   - Add your secret:
+     ```toml
+     GOOGLE_API_KEY = "your_google_api_key_here"
+     ```
+   - Click "Save"
+
+5. **Done!** 🎉
+   - Your app will be live at: `https://[your-app-name].streamlit.app`
+
+### Get Your Google API Key
+- Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
+- Sign in and create an API key
+- Copy the key and add it to Streamlit secrets
+
+## Alternative Deployment - Render
 
 ### Prerequisites
 - A [Render](https://render.com) account
