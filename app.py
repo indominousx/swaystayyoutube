@@ -498,6 +498,20 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
+# Important notice about cloud hosting limitations
+with st.expander("⚠️ Important: YouTube Access Limitations", expanded=False):
+    st.warning("""
+    **Note:** Due to YouTube's restrictions on cloud hosting services, some videos may not be accessible 
+    when using this app on Streamlit Cloud. YouTube blocks requests from cloud provider IPs.
+    
+    **What you can do:**
+    - Try different videos (some may work)
+    - Run the app locally on your computer for full access
+    - Wait a few minutes between requests
+    
+    This is a known limitation of the YouTube Transcript API on cloud platforms.
+    """)
+
 # Create tabs
 tab1, tab2, tab3 = st.tabs([" Summarize", " Ask Questions", " History"])
 
@@ -567,12 +581,26 @@ with tab1:
                     ytapi = YouTubeTranscriptApi()
                     transcript_list = ytapi.fetch(video_id=video_id, languages=['en'])
                     transcript = " ".join([t.text for t in transcript_list])
-                except TranscriptsDisabled:
-                    st.markdown("""
-                        <div class="error-message">
-                            <strong> Error:</strong> Transcripts are disabled for this video.
-                        </div>
-                    """, unsafe_allow_html=True)
+                except Exception as e:
+                    error_msg = str(e)
+                    if "blocked" in error_msg.lower() or "ip" in error_msg.lower():
+                        st.markdown("""
+                            <div class="error-message">
+                                <strong>⚠️ YouTube Access Blocked:</strong> YouTube is blocking requests from this server's IP address. 
+                                This is a common limitation when using cloud hosting services.<br><br>
+                                <strong>Workarounds:</strong><br>
+                                1. Try a different video that may have captions enabled<br>
+                                2. Use the app locally on your computer<br>
+                                3. Wait a few minutes and try again<br>
+                                4. Consider using a proxy service (advanced users)
+                            </div>
+                        """, unsafe_allow_html=True)
+                    else:
+                        st.markdown(f"""
+                            <div class="error-message">
+                                <strong> Error:</strong> {error_msg}
+                            </div>
+                        """, unsafe_allow_html=True)
                     transcript = ""
 
             if transcript:
