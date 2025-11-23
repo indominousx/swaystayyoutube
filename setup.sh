@@ -3,15 +3,16 @@
 # Create .streamlit directory if it doesn't exist
 mkdir -p ~/.streamlit/
 
-# Create Streamlit config file
-echo "\
-[general]\n\
-email = \"\"\n\
-" > ~/.streamlit/credentials.toml
+# Create Streamlit credentials file
+cat > ~/.streamlit/credentials.toml << EOF
+[general]
+email = ""
+EOF
 
-echo "\
-[server]\n\
-headless = true\n\
-enableXsrfProtection = false\n\
-enableCORS = false\n\
-" > ~/.streamlit/config.toml
+# Create Streamlit config file
+cat > ~/.streamlit/config.toml << EOF
+[server]
+headless = true
+enableXsrfProtection = false
+enableCORS = false
+EOF
