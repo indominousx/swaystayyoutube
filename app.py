@@ -62,6 +62,8 @@
 
 #         st.subheader("📝 Summary")
 #         st.write(summary)
+
+
 import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -507,7 +509,7 @@ with tab1:
         
         video_input = st.text_input(
             "YouTube Video URL or ID",
-            "1rObihO_seo",
+            "",
             help="Paste the full YouTube URL or just the video ID"
         )
         
@@ -765,7 +767,7 @@ with tab3:
         if len(st.session_state.summary_history) == 0:
             st.info("No summaries generated yet. Start by summarizing a video!")
         else:
-            st.markdown(f"**Total Summaries:** {len(st.session_state.summary_history)}")
+            st.markdown(f"*Total Summaries:* {len(st.session_state.summary_history)}")
             
             for idx, item in enumerate(reversed(st.session_state.summary_history)):
                 metadata = item.get('metadata', {})
